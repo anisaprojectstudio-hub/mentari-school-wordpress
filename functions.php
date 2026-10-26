@@ -47,3 +47,29 @@ function mentari_school_enqueue_assets() {
     );
 }
 add_action('wp_enqueue_scripts', 'mentari_school_enqueue_assets');
+
+/*** Mentari School - Homepage Customizer ***/
+function mentari_school_customize_register( $wp_customize ) {
+
+    // Panel pengaturan homepage
+    $wp_customize->add_section( 'mentari_homepage_section', array(
+        'title'    => 'Homepage Mentari School',
+        'priority' => 30,
+    ) );
+
+    // Pengaturan judul hero
+    $wp_customize->add_setting( 'mentari_main_hero_title', array(
+        'default'           => 'More than lessons. It’s life.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+    $wp_customize->add_control( 'mentari_hero_title_control', array(
+        'label'       => 'Judul Hero Homepage',
+        'section'     => 'mentari_homepage_section',
+        'settings'    => 'mentari_main_hero_title',
+        'type'        => 'text',
+        'description' => 'Ubah judul utama yang tampil di bagian hero homepage.',
+    ) );
+
+}
+add_action( 'customize_register', 'mentari_school_customize_register' );

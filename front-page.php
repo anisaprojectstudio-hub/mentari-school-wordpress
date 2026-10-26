@@ -27,9 +27,24 @@
                             <span class="pulse-dot"></span>
                             <span class="badge-text">IB World School & Cambridge Accredited</span>
                         </div>
-                        <h1 class="hero-tagline mb-4">
-                            More than lessons.<br><span class="highlight-text">It’s life.</span>
-                        </h1>
+
+<h1 class="hero-tagline mb-4">
+    <?php
+    echo wp_kses(
+        get_theme_mod(
+            'mentari_main_hero_title',
+            'More than lessons.<br><span class="highlight-text">It’s life.</span>'
+        ),
+        array(
+            'br'   => array(),
+            'span' => array(
+                'class' => array(),
+            ),
+        )
+    );
+    ?>
+</h1>
+
                         <p class="hero-description mb-4">
                             At MIS, learning goes beyond the classroom—nurturing minds, building characters, and shaping futures.
                         </p>
